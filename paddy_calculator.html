@@ -21,7 +21,6 @@
   html{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Sarabun',sans-serif;font-size:16px;color:var(--text)}
   body{min-height:100vh;padding:0 0 80px}
 
-  /* HEADER */
   .header{background:var(--accent);padding:16px 16px 0;position:sticky;top:0;z-index:10}
   .header h1{color:#fff;font-size:17px;font-weight:600}
   .header p{color:rgba(255,255,255,0.65);font-size:11px;margin-top:2px;padding-bottom:12px}
@@ -34,13 +33,11 @@
   .content{padding:12px 16px}
   .mode-panel{display:none}.mode-panel.active{display:block}
 
-  /* CARDS */
   .card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:12px;overflow:hidden}
   .card-header{padding:11px 16px 10px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
   .card-header h2{font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
   .card-body{padding:12px 16px}
 
-  /* FIELDS */
   .field{margin-bottom:12px}.field:last-child{margin-bottom:0}
   .field label{display:block;font-size:13px;color:var(--text-muted);margin-bottom:5px;font-weight:500}
   .field select,.field input[type=number]{width:100%;padding:11px 12px;font-size:16px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);color:var(--text);-webkit-appearance:none;appearance:none;outline:none;font-family:inherit;}
@@ -48,13 +45,11 @@
   .field input:focus,.field select:focus{border-color:var(--accent);background:#fff}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-  /* TOGGLES */
   .base-toggle{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
   .base-btn{padding:10px;font-size:13px;font-weight:500;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer;font-family:inherit}
   .base-btn.active{border-color:var(--accent);background:var(--accent-light);color:var(--accent-text)}
   .reset-btn{font-size:12px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--text-muted);cursor:pointer;font-family:inherit}
 
-  /* YIELD TABLE */
   .yield-table{width:100%;border-collapse:collapse}
   .yield-table thead th{font-size:11px;font-weight:600;color:var(--text-muted);text-align:left;padding:0 8px 8px;text-transform:uppercase;letter-spacing:.04em}
   .yield-table thead th:not(:first-child){text-align:right}
@@ -69,16 +64,14 @@
   .sum-highlight{color:var(--accent-text);font-weight:700}
   .warn-box{background:var(--warn-bg);border-radius:var(--radius-sm);padding:8px 12px;font-size:12px;color:var(--warn);margin-top:8px;display:none}
 
-  /* BUTTONS */
   .calc-btn{width:100%;padding:15px;font-size:17px;font-weight:600;background:var(--accent);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;font-family:inherit;margin-bottom:12px;}
   .calc-btn:active{opacity:.85;transform:scale(.99)}
 
-  /* MODE 1 RESULT */
   .result-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;display:none}
   .result-header{background:var(--accent);padding:14px 16px;text-align:center}
   .result-header .rl{color:rgba(255,255,255,.7);font-size:12px;margin-bottom:4px}
   .result-header .rp{color:#fff;font-size:36px;font-weight:700;letter-spacing:-1px;line-height:1}
-  .result-header .rs{color:rgba(255,255,255,.65);font-size:11px;margin-top:6px;line-height:1.5}
+  .result-header .rs{color:rgba(255,255,255,.65);font-size:11px;margin-top:6px;line-height:1.5;white-space:pre-line}
   .steps{padding:0 16px}
   .step-item{display:flex;justify-content:space-between;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--border)}
   .step-item:last-child{border-bottom:none}
@@ -88,10 +81,7 @@
   .step-right.deduct{color:var(--red)}
   .step-right.result{color:var(--accent-text)}
 
-  /* MODE 2 */
   .m2-note{font-size:12px;color:var(--text-muted);margin-top:8px;line-height:1.6}
-
-  /* MODE 2 RESULT */
   .m2-result{display:none;margin-top:0}
   .verdict-bar{border-radius:var(--radius) var(--radius) 0 0;padding:16px;text-align:center}
   .verdict-bar.profit{background:var(--green-bg)}
@@ -122,13 +112,35 @@
   .impact-value.green{color:var(--green)}
   .impact-value.red{color:var(--red)}
   .impact-value.neutral{color:var(--text)}
+
+  /* ── COST SECTION ── */
+  .cost-mode-toggle{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:14px}
+  .cost-mode-btn{padding:10px 6px;font-size:12px;font-weight:600;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:transparent;color:var(--text-muted);cursor:pointer;font-family:inherit;text-align:center;line-height:1.4}
+  .cost-mode-btn .sub{font-size:10px;font-weight:400;opacity:.75;display:block;margin-top:1px}
+  .cost-mode-btn.active{border-color:var(--accent);background:var(--accent-light);color:var(--accent-text)}
+  .cost-opt-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-top:1px solid var(--border)}
+  .cost-opt-label{font-size:13px;color:var(--text-muted)}
+  .pair-toggle{display:flex}
+  .pair-btn{padding:5px 12px;font-size:12px;font-weight:500;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;font-family:inherit}
+  .pair-btn:first-child{border-radius:6px 0 0 6px}
+  .pair-btn:last-child{border-radius:0 6px 6px 0;border-left:none}
+  .pair-btn.active{background:var(--accent-light);border-color:var(--accent);color:var(--accent-text);font-weight:600}
+  .cost-summary{background:var(--bg);border-radius:var(--radius-sm);padding:10px 12px;margin-top:12px}
+  .cs-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:3px 0}
+  .cs-label{color:var(--text-muted)}
+  .cs-value{color:var(--text);font-weight:500}
+  .cs-off{color:var(--text-muted);font-style:italic}
+  .cs-divider{border:none;border-top:1px solid var(--border);margin:6px 0}
+  .cs-total-row{display:flex;justify-content:space-between;align-items:center;padding-top:2px}
+  .cs-total{font-size:13px;font-weight:700;color:var(--accent-text)}
+  .mode-tag{font-size:10px;background:var(--accent-light);color:var(--accent-text);padding:2px 7px;border-radius:4px;font-weight:600;letter-spacing:.03em}
 </style>
 </head>
 <body>
 
 <div class="header">
   <h1>คำนวณราคารับซื้อข้าวเปลือก</h1>
-  <p>อ้างอิงจาก yield · ความชื้น · สิ่งเจือปน</p>
+  <p>yield · ความชื้น · สิ่งเจือปน · ต้นทุนจริง (Project 2)</p>
   <div class="mode-tabs">
     <button class="mode-tab active" onclick="switchMode(1)">Mode 1 — ราคารับซื้อ</button>
     <button class="mode-tab" onclick="switchMode(2)">Mode 2 — วิเคราะห์สู้ราคา</button>
@@ -137,10 +149,7 @@
 
 <div class="content">
 
-<!-- ═══════════════════════════════════════════════
-     SHARED INPUTS (always visible)
-════════════════════════════════════════════════ -->
-
+  <!-- ชนิดข้าว -->
   <div class="card">
     <div class="card-header"><h2>ชนิดข้าวเปลือก</h2></div>
     <div class="card-body">
@@ -158,6 +167,7 @@
     </div>
   </div>
 
+  <!-- ข้อมูลข้าวสด -->
   <div class="card">
     <div class="card-header"><h2>ข้อมูลข้าวเปลือกสด</h2></div>
     <div class="card-body">
@@ -175,6 +185,7 @@
     </div>
   </div>
 
+  <!-- Yield table -->
   <div class="card">
     <div class="card-header">
       <h2>yield ผลผลิต &amp; ราคาตลาด</h2>
@@ -192,6 +203,12 @@
         </thead>
         <tbody id="yieldBody"></tbody>
         <tfoot>
+          <tr style="background:var(--accent-light)">
+            <td style="padding-left:8px;font-size:12px;font-weight:600;color:var(--accent-text)">รวม (ไม่รวมแกลบ)</td>
+            <td class="total-right" id="subtotalKg" style="font-weight:600;color:var(--accent-text)">—</td>
+            <td></td>
+            <td class="total-right" id="subtotalRev" style="font-weight:600;color:var(--accent-text)">—</td>
+          </tr>
           <tr class="chaff-row">
             <td style="padding-left:8px">แกลบ</td>
             <td class="total-right" id="chaffKg">—</td>
@@ -214,22 +231,65 @@
     </div>
   </div>
 
+  <!-- ── ต้นทุนการผลิต (NEW) ── -->
   <div class="card">
-    <div class="card-header"><h2>ค่าใช้จ่ายโรงสี</h2></div>
+    <div class="card-header">
+      <h2>ต้นทุนการผลิต</h2>
+      <span class="mode-tag" id="costModeTag">CASH</span>
+    </div>
     <div class="card-body">
-      <div class="row2">
-        <div class="field">
-          <label>ค่าสี (฿/ตันแห้ง)</label>
-          <input type="number" id="millingCost" value="500" step="50" inputmode="decimal">
-        </div>
-        <div class="field">
-          <label>ค่าอบ (฿/ตันสด)</label>
-          <input type="number" id="dryingCost" value="300" step="50" inputmode="decimal">
-        </div>
+
+      <div class="cost-mode-toggle">
+        <button class="cost-mode-btn active" id="btnCash" onclick="setCostMode('cash')">
+          Cash<span class="sub">ไม่รวมเสื่อมราคา</span>
+        </button>
+        <button class="cost-mode-btn" id="btnFull" onclick="setCostMode('full')">
+          Full<span class="sub">รวมเสื่อมราคา</span>
+        </button>
+        <button class="cost-mode-btn" id="btnCustom" onclick="setCostMode('custom')">
+          Custom<span class="sub">กำหนดเอง</span>
+        </button>
       </div>
+
+      <!-- Preset options -->
+      <div id="costOptions">
+        <div class="cost-opt-row">
+          <span class="cost-opt-label">ต้องอบข้าว?</span>
+          <div class="pair-toggle">
+            <button class="pair-btn active" id="btnDryY" onclick="setOpt('dry',true)">ต้องอบ</button>
+            <button class="pair-btn" id="btnDryN" onclick="setOpt('dry',false)">ไม่ต้องอบ</button>
+          </div>
+        </div>
+        <div class="cost-opt-row">
+          <span class="cost-opt-label">รวมต้นทุนแพ็ค?</span>
+          <div class="pair-toggle">
+            <button class="pair-btn" id="btnPackY" onclick="setOpt('pack',true)">รวม</button>
+            <button class="pair-btn active" id="btnPackN" onclick="setOpt('pack',false)">ไม่รวม</button>
+          </div>
+        </div>
+        <div class="cost-opt-row">
+          <span class="cost-opt-label">รวมต้นทุน Admin?</span>
+          <div class="pair-toggle">
+            <button class="pair-btn" id="btnAdmY" onclick="setOpt('adm',true)">รวม</button>
+            <button class="pair-btn active" id="btnAdmN" onclick="setOpt('adm',false)">ไม่รวม</button>
+          </div>
+        </div>
+        <div class="cost-summary" id="costSummary"></div>
+      </div>
+
+      <!-- Custom input -->
+      <div id="customSection" style="display:none">
+        <div class="field" style="margin-top:8px">
+          <label>ต้นทุนรวม (฿/ตันสด)</label>
+          <input type="number" id="customCost" value="928" step="50" inputmode="decimal" oninput="renderCostSummary()">
+        </div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:4px">ค่าใช้จ่ายทั้งหมดต่อข้าวเปลือกสด 1 ตัน</div>
+      </div>
+
     </div>
   </div>
 
+  <!-- ค่าใช้จ่ายรับซื้อ -->
   <div class="card">
     <div class="card-header"><h2>ค่าใช้จ่ายรับซื้อ (ต่อตันสด)</h2></div>
     <div class="card-body">
@@ -246,9 +306,7 @@
     </div>
   </div>
 
-<!-- ═══════════════════════════════════════════════
-     MODE 1 — ราคารับซื้อ
-════════════════════════════════════════════════ -->
+  <!-- Mode 1 -->
   <div class="mode-panel active" id="panel1">
     <button class="calc-btn" onclick="calcMode1()">คำนวณราคารับซื้อ</button>
     <div class="result-card" id="resultCard1">
@@ -261,9 +319,7 @@
     </div>
   </div>
 
-<!-- ═══════════════════════════════════════════════
-     MODE 2 — วิเคราะห์สู้ราคา
-════════════════════════════════════════════════ -->
+  <!-- Mode 2 -->
   <div class="mode-panel" id="panel2">
     <div class="card">
       <div class="card-header"><h2>ข้อมูลการสู้ราคา</h2></div>
@@ -281,16 +337,13 @@
         <div class="m2-note">💡 กรอกราคาที่คู่แข่งเสนอ แล้วกดวิเคราะห์เพื่อดูว่าถ้าสู้จะกำไรหรือขาดทุนเท่าไหร่</div>
       </div>
     </div>
-
     <button class="calc-btn" onclick="calcMode2()">วิเคราะห์การสู้ราคา</button>
-
     <div class="card m2-result" id="resultCard2">
       <div class="verdict-bar" id="verdictBar">
         <div class="verdict-icon" id="verdictIcon"></div>
         <div class="verdict-title" id="verdictTitle"></div>
         <div class="verdict-sub" id="verdictSub"></div>
       </div>
-
       <div class="compare-grid">
         <div class="cg-item">
           <div class="cg-label">ราคา Break-even</div>
@@ -308,7 +361,6 @@
           <div class="cg-unit">฿/ตันสด</div>
         </div>
       </div>
-
       <div class="impact-section">
         <div class="impact-row">
           <div class="impact-label">น้ำหนัก batch นี้</div>
@@ -330,9 +382,10 @@
     </div>
   </div>
 
-</div><!-- end .content -->
+</div>
 
 <script>
+// ── RICE DATA ──
 const RICE_LIST=[
   {sku:'PA1000',name:'หอมมะลิอีสาน',  y:{main:400,threeQ:30, broken:190,tail:30,bran:90}, p:{main:24.87,threeQ:11,  broken:11,  tail:9,  bran:8.5},sticky:false},
   {sku:'PB1000',name:'หอมมะลิจังหวัด',y:{main:410,threeQ:30, broken:190,tail:30,bran:90}, p:{main:24.26,threeQ:11,  broken:11,  tail:9,  bran:8.5},sticky:false},
@@ -353,132 +406,223 @@ const KEYS=['main','threeQ','broken','tail','bran'];
 const M_JASMINE={0.11:0,0.12:0,0.13:0,0.14:0,0.15:10,0.16:20,0.17:30,0.18:40,0.19:50,0.20:61,0.21:72,0.22:83,0.23:94,0.24:105,0.25:116,0.26:127,0.27:139,0.28:151,0.29:163,0.30:175,0.31:187,0.32:199,0.33:211,0.34:223,0.35:235};
 const M_STICKY={0.11:0,0.12:0,0.13:0,0.14:0,0.15:2,0.16:24,0.17:36,0.18:48,0.19:60,0.20:72,0.21:84,0.22:96,0.23:108,0.24:120,0.25:135,0.26:150,0.27:165,0.28:180,0.29:195,0.30:210,0.31:225,0.32:240,0.33:255,0.34:270,0.35:285};
 
+// ── COST PRESETS (Project 2 · Base 907 ตัน/เดือน · Apr 2568–Jun 2569) ──
+// หน่วย: ฿/ตันสด input paddy
+const PRESETS = {
+  cash: { mill:632, dry:296, pack:79,  adm:78 },
+  full: { mill:1195,dry:473, pack:110, adm:78 }
+};
+// mill = โรงสี+General, dry = เครื่องอบ, pack = แพ็ค, adm = Admin overhead
+// cash = ไม่รวมเสื่อมราคา (เสื่อมราคา: mill 563, dry 177, pack 31)
+// full = รวมเสื่อมราคาทั้งหมด
+
+// ── STATE ──
+let costMode='cash', optDry=true, optPack=false, optAdm=false;
 let baseHumidity=14;
 let currentRice=RICE_LIST.find(r=>r.sku==='PE1000');
 let defaultY={},defaultP={};
-let lastBreakeven=null;
 
+// ── LOCALSTORAGE PERSISTENCE ──
+const LS_PREFIX='paddy_v1_';
+function saveYieldData(sku){
+  const y={},p={};
+  KEYS.forEach(k=>{
+    const ye=document.getElementById('y_'+k);
+    const pe=document.getElementById('p_'+k);
+    if(ye)y[k]=ye.value;
+    if(pe)p[k]=pe.value;
+  });
+  try{localStorage.setItem(LS_PREFIX+sku,JSON.stringify({y,p}));}catch(e){}
+}
+function loadYieldData(sku){
+  try{
+    const raw=localStorage.getItem(LS_PREFIX+sku);
+    return raw?JSON.parse(raw):null;
+  }catch(e){return null;}
+}
+function saveLastSku(sku){
+  try{localStorage.setItem(LS_PREFIX+'lastSku',sku);}catch(e){}
+}
+function getLastSku(){
+  try{return localStorage.getItem(LS_PREFIX+'lastSku');}catch(e){return null;}
+}
+
+// ── COST FUNCTIONS ──
+function setCostMode(m){
+  costMode=m;
+  ['Cash','Full','Custom'].forEach(x=>{
+    document.getElementById('btn'+x).classList.toggle('active',m===x.toLowerCase());
+  });
+  document.getElementById('costOptions').style.display=m==='custom'?'none':'block';
+  document.getElementById('customSection').style.display=m==='custom'?'block':'none';
+  const tags={cash:'CASH',full:'FULL',custom:'CUSTOM'};
+  document.getElementById('costModeTag').textContent=tags[m];
+  renderCostSummary();
+}
+
+function setOpt(key,val){
+  if(key==='dry'){optDry=val;document.getElementById('btnDryY').classList.toggle('active',val);document.getElementById('btnDryN').classList.toggle('active',!val);}
+  if(key==='pack'){optPack=val;document.getElementById('btnPackY').classList.toggle('active',val);document.getElementById('btnPackN').classList.toggle('active',!val);}
+  if(key==='adm'){optAdm=val;document.getElementById('btnAdmY').classList.toggle('active',val);document.getElementById('btnAdmN').classList.toggle('active',!val);}
+  renderCostSummary();
+}
+
+function getProductionCost(){
+  if(costMode==='custom') return parseFloat(document.getElementById('customCost').value)||0;
+  const p=PRESETS[costMode];
+  return p.mill+(optDry?p.dry:0)+(optPack?p.pack:0)+(optAdm?p.adm:0);
+}
+
+function renderCostSummary(){
+  if(costMode==='custom') return;
+  const p=PRESETS[costMode];
+  const fmt=n=>n.toLocaleString('th-TH');
+  const total=getProductionCost();
+  const mLabel=costMode==='cash'?'Cash':'Full';
+  const rows=[
+    {label:'โรงสี + General',val:p.mill,on:true},
+    {label:'+ เครื่องอบ',val:p.dry,on:optDry,off:'ไม่อบ'},
+    {label:'+ แพ็ค',val:p.pack,on:optPack,off:'ขายกระสอบ'},
+    {label:'+ Admin',val:p.adm,on:optAdm,off:'แยกต่างหาก'},
+  ];
+  document.getElementById('costSummary').innerHTML=
+    rows.map(r=>`<div class="cs-row"><span class="cs-label">${r.label}</span><span class="${r.on?'cs-value':'cs-off'}">${r.on?fmt(r.val)+' ฿':'— ('+r.off+')'}</span></div>`).join('')+
+    `<hr class="cs-divider"><div class="cs-total-row"><span class="cs-total">รวม [${mLabel}]</span><span class="cs-total">${fmt(total)} ฿/ตันสด</span></div>`;
+}
+
+// ── RICE FUNCTIONS (unchanged) ──
 function switchMode(m){
   document.querySelectorAll('.mode-tab').forEach((t,i)=>t.classList.toggle('active',i===m-1));
   document.querySelectorAll('.mode-panel').forEach((p,i)=>p.classList.toggle('active',i===m-1));
 }
-
 function setBase(v){
   baseHumidity=v;
   document.getElementById('btn14').classList.toggle('active',v===14);
   document.getElementById('btn15').classList.toggle('active',v===15);
 }
-
 function buildSelect(){
   const sel=document.getElementById('riceType');
+  const lastSku=getLastSku()||'PE1000';
   RICE_LIST.forEach(r=>{
     const o=document.createElement('option');
     o.value=r.sku;o.textContent=r.sku+' — '+r.name;
-    if(r.sku==='PE1000')o.selected=true;
+    if(r.sku===lastSku)o.selected=true;
     sel.appendChild(o);
   });
+  currentRice=RICE_LIST.find(r=>r.sku===lastSku)||RICE_LIST.find(r=>r.sku==='PE1000');
   sel.addEventListener('change',()=>{
+    // บันทึก yield ของข้าวชนิดเดิมก่อนเปลี่ยน
+    saveYieldData(currentRice.sku);
     currentRice=RICE_LIST.find(r=>r.sku===sel.value);
+    saveLastSku(currentRice.sku);
     renderYield();
     document.getElementById('resultCard1').style.display='none';
     document.getElementById('resultCard2').style.display='none';
-    lastBreakeven=null;
   });
 }
-
 function renderYield(){
   defaultY={...currentRice.y};defaultP={...currentRice.p};
-  const tbody=document.getElementById('yieldBody');
-  tbody.innerHTML='';
+  // โหลดค่าที่เคยบันทึกไว้ (ถ้ามี)
+  const saved=loadYieldData(currentRice.sku);
+  const tbody=document.getElementById('yieldBody');tbody.innerHTML='';
   KEYS.forEach(k=>{
+    const yVal=saved?saved.y[k]:currentRice.y[k];
+    const pVal=saved?parseFloat(saved.p[k]).toFixed(2):currentRice.p[k].toFixed(2);
     const tr=document.createElement('tr');
-    tr.innerHTML=`
-      <td style="padding-left:8px">${LABELS[k]}</td>
-      <td><input type="number" id="y_${k}" value="${currentRice.y[k]}" min="0" max="1000" step="5" inputmode="decimal" oninput="liveUpdate()"></td>
-      <td><input type="number" id="p_${k}" value="${currentRice.p[k].toFixed(2)}" min="0" step="0.01" inputmode="decimal" oninput="liveUpdate()" onblur="this.value=parseFloat(this.value||0).toFixed(2)"></td>
+    tr.innerHTML=`<td style="padding-left:8px">${LABELS[k]}</td>
+      <td><input type="number" id="y_${k}" value="${yVal}" min="0" max="1000" step="5" inputmode="decimal" oninput="liveUpdate();saveYieldData('${currentRice.sku}')"></td>
+      <td><input type="number" id="p_${k}" value="${pVal}" min="0" step="0.01" inputmode="decimal" oninput="liveUpdate();saveYieldData('${currentRice.sku}')" onblur="this.value=parseFloat(this.value||0).toFixed(2)"></td>
       <td class="rev-cell" id="rev_${k}">—</td>`;
     tbody.appendChild(tr);
   });
   liveUpdate();
 }
-
 function liveUpdate(){
   let totalRev=0,nonChaff=0;
   KEYS.forEach(k=>{
     const y=parseFloat(document.getElementById('y_'+k)?.value)||0;
     const p=parseFloat(document.getElementById('p_'+k)?.value)||0;
     const rev=y*p;totalRev+=rev;nonChaff+=y;
-    const rEl=document.getElementById('rev_'+k);
-    if(rEl)rEl.textContent=Math.round(rev).toLocaleString('th-TH');
+    const el=document.getElementById('rev_'+k);
+    if(el)el.textContent=Math.round(rev).toLocaleString('th-TH');
   });
+  // แถว subtotal (ไม่รวมแกลบ)
+  const stKg=document.getElementById('subtotalKg');
+  const stRev=document.getElementById('subtotalRev');
+  if(stKg)stKg.textContent=nonChaff.toLocaleString('th-TH')+' กก.';
+  if(stRev)stRev.textContent=Math.round(totalRev).toLocaleString('th-TH');
   document.getElementById('chaffKg').textContent=(1000-nonChaff)+' กก.';
   document.getElementById('totalRevCell').textContent=Math.round(totalRev).toLocaleString('th-TH')+' บาท';
   document.getElementById('yieldWarn').style.display=nonChaff>1000?'block':'none';
 }
-
 function resetYield(){
   KEYS.forEach(k=>{
-    const yEl=document.getElementById('y_'+k);
-    const pEl=document.getElementById('p_'+k);
-    if(yEl)yEl.value=defaultY[k];
-    if(pEl)pEl.value=defaultP[k];
+    const y=document.getElementById('y_'+k);const p=document.getElementById('p_'+k);
+    if(y)y.value=defaultY[k];if(p)p.value=defaultP[k].toFixed(2);
   });
+  // ลบ cache ของชนิดนี้ออก
+  try{localStorage.removeItem(LS_PREFIX+currentRice.sku);}catch(e){}
   liveUpdate();
 }
-
 function getMoistureLoss(rice,m){
   const key=parseFloat(m.toFixed(2));
   return(rice.sticky?M_STICKY:M_JASMINE)[key]??null;
 }
 
+// ── COMPUTE (updated formula) ──
+// Formula: breakeven = revenue × (netDryWeight/1000) − productionCost − procurementCost
+// productionCost = flat ฿/ตันสด (from Project 2 overhead, per ton of input paddy)
+// ไม่ใช่ per dry ton เพราะ overhead ของโรงสีไม่ได้ scale ตาม dry weight
 function computeBreakeven(){
   const moisture=parseFloat(document.getElementById('moisture').value)/100;
   const impGrams=parseFloat(document.getElementById('impurity').value);
-  const millingCost=parseFloat(document.getElementById('millingCost').value)||0;
-  const dryingCost=parseFloat(document.getElementById('dryingCost').value)||0;
-  const transportCost=parseFloat(document.getElementById('transportCost').value)||0;
-  const brokerageCost=parseFloat(document.getElementById('brokerageCost').value)||0;
+  const transport=parseFloat(document.getElementById('transportCost').value)||0;
+  const brokerage=parseFloat(document.getElementById('brokerageCost').value)||0;
+  const prodCost=getProductionCost();
 
   const moistureLoss=getMoistureLoss(currentRice,moisture);
   if(moistureLoss===null){alert('ความชื้น '+Math.round(moisture*100)+'% ไม่อยู่ในตาราง (11%–35%)');return null;}
 
-  const impurityLossKg=Math.round(1000*(100-impGrams)/100);
-  const impurityPct=(100-impGrams).toFixed(1);
-  const netDryWeight=1000-moistureLoss-impurityLossKg;
+  const impLossKg=Math.round(1000*(100-impGrams)/100);
+  const impPct=(100-impGrams).toFixed(1);
+  const netDry=1000-moistureLoss-impLossKg;
 
-  let totalRevPerTon=0;
+  let revPerDryTon=0;
   KEYS.forEach(k=>{
-    const y=parseFloat(document.getElementById('y_'+k)?.value)||0;
-    const p=parseFloat(document.getElementById('p_'+k)?.value)||0;
-    totalRevPerTon+=y*p;
+    revPerDryTon+=(parseFloat(document.getElementById('y_'+k)?.value)||0)*(parseFloat(document.getElementById('p_'+k)?.value)||0);
   });
 
-  const netRevenuePerTon=totalRevPerTon-millingCost;
-  const valueBatch=netRevenuePerTon*(netDryWeight/1000);
-  const totalFreshCosts=dryingCost+transportCost+brokerageCost;
-  const finalPrice=valueBatch-totalFreshCosts;
+  const revBatch=revPerDryTon*(netDry/1000);
+  const finalPrice=revBatch-prodCost-transport-brokerage;
 
-  return{finalPrice,moistureLoss,impurityLossKg,impurityPct,netDryWeight,
-         totalRevPerTon,netRevenuePerTon,valueBatch,
-         millingCost,dryingCost,transportCost,brokerageCost,
-         moisture,impGrams,totalFreshCosts};
+  return{finalPrice,moistureLoss,impLossKg,impPct,netDry,revPerDryTon,revBatch,prodCost,transport,brokerage,moisture,impGrams};
 }
 
 function calcMode1(){
   const r=computeBreakeven();if(!r)return;
-  lastBreakeven=r.finalPrice;
   const fmt=n=>Math.round(n).toLocaleString('th-TH');
+  const mLabel={cash:'Cash',full:'Full',custom:'Custom'}[costMode];
+
+  // Cost detail string
+  let costDetail='';
+  if(costMode!=='custom'){
+    const p=PRESETS[costMode];
+    const parts=[`โรงสี+Gen ${fmt(p.mill)}`];
+    if(optDry)parts.push(`อบ ${fmt(p.dry)}`);
+    if(optPack)parts.push(`แพ็ค ${fmt(p.pack)}`);
+    if(optAdm)parts.push(`Admin ${fmt(p.adm)}`);
+    costDetail=parts.join(' + ')+' ฿';
+  } else {costDetail='กำหนดเอง';}
+
   const steps=[
-    {l:'น้ำหนักหายจากความชื้น',   s:`ความชื้นสด ${Math.round(r.moisture*100)}% → แห้ง ${baseHumidity}%`,v:`− ${r.moistureLoss} กก.`,t:'deduct'},
-    {l:'น้ำหนักหายจากสิ่งเจือปน', s:`${r.impGrams}/100 → เจือปน ${r.impurityPct}%`,v:`− ${r.impurityLossKg} กก.`,t:'deduct'},
-    {l:'น้ำหนักแห้งสุทธิ',         s:'จากข้าวสด 1,000 กก.',v:`${Math.round(r.netDryWeight)} กก.`,t:'result'},
-    {l:'รายได้รวม (per ตันแห้ง)',  s:'จาก yield matrix',v:`${fmt(r.totalRevPerTon)} บาท`,t:''},
-    {l:'หักค่าสี',                 s:'ต่อตันแห้ง',v:`− ${r.millingCost} บาท`,t:'deduct'},
-    {l:'มูลค่าข้าวชุดนี้',         s:`${fmt(r.netRevenuePerTon)} × (${Math.round(r.netDryWeight)}/1,000)`,v:`${fmt(r.valueBatch)} บาท`,t:'result'},
-    {l:'หักค่าอบ',s:'ต่อตันสด',v:`− ${r.dryingCost} บาท`,t:'deduct'},
+    {l:'น้ำหนักหายจากความชื้น',   s:`สด ${Math.round(r.moisture*100)}% → แห้ง ${baseHumidity}%`,         v:`− ${r.moistureLoss} กก.`,t:'deduct'},
+    {l:'น้ำหนักหายจากสิ่งเจือปน', s:`${r.impGrams}/100 ก. → เจือปน ${r.impPct}%`,                        v:`− ${r.impLossKg} กก.`,t:'deduct'},
+    {l:'น้ำหนักแห้งสุทธิ',         s:'จากข้าวสด 1,000 กก.',                                               v:`${Math.round(r.netDry)} กก.`,t:'result'},
+    {l:'รายได้จาก yield',           s:`${fmt(r.revPerDryTon)} ฿/ตันแห้ง × ${Math.round(r.netDry)}/1,000`, v:`${fmt(r.revBatch)} บาท`,t:'result'},
+    {l:`หักต้นทุนการผลิต [${mLabel}]`,s:costDetail,                                                        v:`− ${fmt(r.prodCost)} บาท`,t:'deduct'},
   ];
-  if(r.transportCost>0)steps.push({l:'หักค่าขนส่ง',s:'ต่อตันสด',v:`− ${r.transportCost} บาท`,t:'deduct'});
-  if(r.brokerageCost>0)steps.push({l:'หักค่านายหน้า',s:'ต่อตันสด',v:`− ${r.brokerageCost} บาท`,t:'deduct'});
+  if(r.transport>0)steps.push({l:'หักค่าขนส่ง',s:'ต่อตันสด',v:`− ${fmt(r.transport)} บาท`,t:'deduct'});
+  if(r.brokerage>0)steps.push({l:'หักค่านายหน้า',s:'ต่อตันสด',v:`− ${fmt(r.brokerage)} บาท`,t:'deduct'});
 
   document.getElementById('m1Steps').innerHTML=steps.map(s=>`
     <div class="step-item">
@@ -486,84 +630,54 @@ function calcMode1(){
       <div class="step-right ${s.t}">${s.v}</div>
     </div>`).join('');
   document.getElementById('m1FinalPrice').textContent=fmt(r.finalPrice)+' บาท';
-  document.getElementById('m1Sub').textContent=`${currentRice.name} · ความชื้น ${Math.round(r.moisture*100)}% · เจือปน ${r.impurityPct}%\nต่อข้าวเปลือกสด 1,000 กก.`;
-  const rc=document.getElementById('resultCard1');
-  rc.style.display='block';
+  document.getElementById('m1Sub').textContent=`${currentRice.name} · ความชื้น ${Math.round(r.moisture*100)}% · เจือปน ${r.impPct}%\nต้นทุน [${mLabel}] · ต่อข้าวเปลือกสด 1,000 กก.`;
+  const rc=document.getElementById('resultCard1');rc.style.display='block';
   setTimeout(()=>rc.scrollIntoView({behavior:'smooth',block:'start'}),100);
 }
 
 function calcMode2(){
   const r=computeBreakeven();if(!r)return;
-  lastBreakeven=r.finalPrice;
   const compPrice=parseFloat(document.getElementById('competitorPrice').value)||0;
   const batchTon=parseFloat(document.getElementById('batchTon').value)||1;
   if(compPrice<=0){alert('กรุณากรอกราคาที่คู่แข่งให้');return;}
-
   const fmt=n=>Math.round(n).toLocaleString('th-TH');
-  const diff=compPrice-r.finalPrice; // + = สู้แล้วขาดทุน, - = สู้แล้วยังกำไร
-  const batchImpact=diff*batchTon; // total P&L if fight
-  const breakevenBatch=Math.round(r.finalPrice*batchTon);
-  const compBatch=Math.round(compPrice*batchTon);
+  const diff=compPrice-r.finalPrice;
+  const batchImpact=diff*batchTon;
 
-  // verdict
   const vBar=document.getElementById('verdictBar');
-  const vIcon=document.getElementById('verdictIcon');
-  const vTitle=document.getElementById('verdictTitle');
-  const vSub=document.getElementById('verdictSub');
   vBar.className='verdict-bar';
-  if(diff<0){
-    vBar.classList.add('profit');
-    vIcon.textContent='✓';
-    vTitle.textContent='สู้ได้ — ยังมีกำไร';
-    vSub.textContent=`ราคาคู่แข่งต่ำกว่า break-even อยู่ ${fmt(Math.abs(diff))} บาท/ตัน`;
-  } else if(diff===0){
-    vBar.classList.add('breakeven');
-    vIcon.textContent='⚖';
-    vTitle.textContent='เท่าทุนพอดี';
-    vSub.textContent='ราคาเท่ากับต้นทุน — ไม่กำไรไม่ขาดทุน';
-  } else {
-    vBar.classList.add('loss');
-    vIcon.textContent='!';
-    vTitle.textContent='สู้แล้วขาดทุน';
-    vSub.textContent=`ซื้อเกินราคา break-even ${fmt(diff)} บาท/ตัน`;
-  }
+  if(diff<0){vBar.classList.add('profit');document.getElementById('verdictIcon').textContent='✓';document.getElementById('verdictTitle').textContent='สู้ได้ — ยังมีกำไร';document.getElementById('verdictSub').textContent=`ราคาคู่แข่งต่ำกว่า break-even อยู่ ${fmt(Math.abs(diff))} บาท/ตัน`;}
+  else if(diff===0){vBar.classList.add('breakeven');document.getElementById('verdictIcon').textContent='⚖';document.getElementById('verdictTitle').textContent='เท่าทุนพอดี';document.getElementById('verdictSub').textContent='ราคาเท่ากับต้นทุน — ไม่กำไรไม่ขาดทุน';}
+  else{vBar.classList.add('loss');document.getElementById('verdictIcon').textContent='!';document.getElementById('verdictTitle').textContent='สู้แล้วขาดทุน';document.getElementById('verdictSub').textContent=`ซื้อเกินราคา break-even ${fmt(diff)} บาท/ตัน`;}
 
-  // compare grid
   document.getElementById('cgBreakeven').textContent=fmt(r.finalPrice);
   document.getElementById('cgCompetitor').textContent=fmt(compPrice);
-  const cgDiffEl=document.getElementById('cgDiff');
-  cgDiffEl.textContent=(diff>0?'+':'')+fmt(diff);
-  cgDiffEl.className='cg-value '+(diff>0?'red':diff<0?'green':'muted');
+  const cgD=document.getElementById('cgDiff');
+  cgD.textContent=(diff>0?'+':'')+fmt(diff);
+  cgD.className='cg-value '+(diff>0?'red':diff<0?'green':'muted');
 
-  // impact
   document.getElementById('impBatch').textContent=batchTon.toLocaleString('th-TH')+' ตัน';
-  const impTotalEl=document.getElementById('impTotal');
-  const impSign=batchImpact>0?'+':'';
-  impTotalEl.textContent=impSign+fmt(batchImpact)+' บาท';
-  impTotalEl.className='impact-value '+(batchImpact>0?'red':batchImpact<0?'green':'neutral');
-  document.getElementById('impBreakevenBatch').textContent=fmt(breakevenBatch)+' บาท';
-  document.getElementById('impCompBatch').textContent=fmt(compBatch)+' บาท';
+  const impT=document.getElementById('impTotal');
+  impT.textContent=(batchImpact>0?'+':'')+fmt(batchImpact)+' บาท';
+  impT.className='impact-value '+(batchImpact>0?'red':batchImpact<0?'green':'neutral');
+  document.getElementById('impBreakevenBatch').textContent=fmt(Math.round(r.finalPrice*batchTon))+' บาท';
+  document.getElementById('impCompBatch').textContent=fmt(Math.round(compPrice*batchTon))+' บาท';
 
-  const rc=document.getElementById('resultCard2');
-  rc.style.display='block';
+  const rc=document.getElementById('resultCard2');rc.style.display='block';
   setTimeout(()=>rc.scrollIntoView({behavior:'smooth',block:'start'}),100);
 }
 
-// Select all on focus (mobile: cursor goes to start of number — this forces select all)
-document.addEventListener('focusin', e => {
-  if(e.target.type === 'number') setTimeout(() => e.target.select(), 30);
+document.addEventListener('focusin',e=>{if(e.target.type==='number')setTimeout(()=>e.target.select(),30);});
+['transportCost','brokerageCost','competitorPrice'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el)el.addEventListener('blur',()=>{const v=parseFloat(el.value);if(!isNaN(v))el.value=v.toFixed(2);});
 });
 
-// Static price fields: 2dp on blur
-['transportCost','brokerageCost','competitorPrice'].forEach(id => {
-  const el = document.getElementById(id);
-  if(el) el.addEventListener('blur', () => {
-    const v = parseFloat(el.value);
-    if(!isNaN(v)) el.value = v.toFixed(2);
-  });
-});
-
-buildSelect();renderYield();
+buildSelect();
+renderYield();
+renderCostSummary();
+// บันทึก SKU เริ่มต้น
+saveLastSku(currentRice.sku);
 </script>
 </body>
 </html>
