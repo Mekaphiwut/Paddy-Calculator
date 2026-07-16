@@ -306,6 +306,32 @@
     </div>
   </div>
 
+  <!-- ดอกเบี้ย Working Capital -->
+  <div class="card">
+    <div class="card-header">
+      <h2>ดอกเบี้ย Working Capital</h2>
+      <div class="pair-toggle">
+        <button class="pair-btn" id="btnIntY" onclick="setInterest(true)">รวม</button>
+        <button class="pair-btn active" id="btnIntN" onclick="setInterest(false)">ไม่รวม</button>
+      </div>
+    </div>
+    <div class="card-body" id="interestBody" style="display:none">
+      <div class="row2">
+        <div class="field">
+          <label>ถือสต็อคกี่เดือน</label>
+          <input type="number" id="holdMonths" value="1" min="0.5" max="24" step="0.5" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label>ดอกเบี้ย (%/ปี)</label>
+          <input type="number" id="intRate" value="6.20" min="0" max="20" step="0.1" inputmode="decimal">
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:8px;line-height:1.6">
+        💡 เช่น ซื้อข้าวใหม่รอทำอายุ 3 เดือน → ใส่ 3 · ดอกเบี้ยคำนวณจากราคาซื้อ ตัดจาก break-even อัตโนมัติ
+      </div>
+    </div>
+  </div>
+
   <!-- Mode 1 -->
   <div class="mode-panel active" id="panel1">
     <button class="calc-btn" onclick="calcMode1()">คำนวณราคารับซื้อ</button>
@@ -362,6 +388,7 @@
         </div>
       </div>
       <div class="impact-section">
+        <div id="intOnCompRow"></div>
         <div class="impact-row">
           <div class="impact-label">น้ำหนัก batch นี้</div>
           <div class="impact-value neutral" id="impBatch">—</div>
@@ -418,6 +445,7 @@ const PRESETS = {
 
 // ── STATE ──
 let costMode='cash', optDry=true, optPack=false, optAdm=false;
+let useInterest=false;
 let baseHumidity=14;
 let currentRice=RICE_LIST.find(r=>r.sku==='PE1000');
 let defaultY={},defaultP={};
@@ -458,6 +486,13 @@ function setCostMode(m){
   const tags={cash:'CASH',full:'FULL',custom:'CUSTOM'};
   document.getElementById('costModeTag').textContent=tags[m];
   renderCostSummary();
+}
+
+function setInterest(v){
+  useInterest=v;
+  document.getElementById('btnIntY').classList.toggle('active',v);
+  document.getElementById('btnIntN').classList.toggle('active',!v);
+  document.getElementById('interestBody').style.display=v?'block':'none';
 }
 
 function setOpt(key,val){
@@ -593,9 +628,22 @@ function computeBreakeven(){
   });
 
   const revBatch=revPerDryTon*(netDry/1000);
-  const finalPrice=revBatch-prodCost-transport-brokerage;
+  const netBeforeInterest=revBatch-prodCost-transport-brokerage;
 
-  return{finalPrice,moistureLoss,impLossKg,impPct,netDry,revPerDryTon,revBatch,prodCost,transport,brokerage,moisture,impGrams};
+  let finalPrice, interestCost=0, holdMonths=0, intRatePct=0;
+  if(useInterest){
+    holdMonths=parseFloat(document.getElementById('holdMonths').value)||1;
+    intRatePct=parseFloat(document.getElementById('intRate').value)||6.2;
+    const r=intRatePct/100*holdMonths/12;
+    // Algebraic solve: B×(1+r)=netBeforeInterest → B=net/(1+r), interest=B×r
+    finalPrice=netBeforeInterest/(1+r);
+    interestCost=finalPrice*r;
+  } else {
+    finalPrice=netBeforeInterest;
+  }
+
+  return{finalPrice,interestCost,holdMonths,intRatePct,
+         moistureLoss,impLossKg,impPct,netDry,revPerDryTon,revBatch,prodCost,transport,brokerage,moisture,impGrams};
 }
 
 function calcMode1(){
@@ -623,6 +671,7 @@ function calcMode1(){
   ];
   if(r.transport>0)steps.push({l:'หักค่าขนส่ง',s:'ต่อตันสด',v:`− ${fmt(r.transport)} บาท`,t:'deduct'});
   if(r.brokerage>0)steps.push({l:'หักค่านายหน้า',s:'ต่อตันสด',v:`− ${fmt(r.brokerage)} บาท`,t:'deduct'});
+  if(useInterest&&r.interestCost>0)steps.push({l:'หักดอกเบี้ย Working Capital',s:`ถือ ${r.holdMonths} เดือน · ${r.intRatePct.toFixed(1)}%/ปี`,v:`− ${fmt(r.interestCost)} บาท`,t:'deduct'});
 
   document.getElementById('m1Steps').innerHTML=steps.map(s=>`
     <div class="step-item">
@@ -630,7 +679,8 @@ function calcMode1(){
       <div class="step-right ${s.t}">${s.v}</div>
     </div>`).join('');
   document.getElementById('m1FinalPrice').textContent=fmt(r.finalPrice)+' บาท';
-  document.getElementById('m1Sub').textContent=`${currentRice.name} · ความชื้น ${Math.round(r.moisture*100)}% · เจือปน ${r.impPct}%\nต้นทุน [${mLabel}] · ต่อข้าวเปลือกสด 1,000 กก.`;
+  const intNote=useInterest?` · ดอกเบี้ย ${r.holdMonths}ด. (${r.intRatePct.toFixed(1)}%/ปี)`:'';
+  document.getElementById('m1Sub').textContent=`${currentRice.name} · ความชื้น ${Math.round(r.moisture*100)}% · เจือปน ${r.impPct}%\nต้นทุน [${mLabel}]${intNote} · ต่อข้าวเปลือกสด 1,000 กก.`;
   const rc=document.getElementById('resultCard1');rc.style.display='block';
   setTimeout(()=>rc.scrollIntoView({behavior:'smooth',block:'start'}),100);
 }
@@ -656,12 +706,27 @@ function calcMode2(){
   cgD.textContent=(diff>0?'+':'')+fmt(diff);
   cgD.className='cg-value '+(diff>0?'red':diff<0?'green':'muted');
 
+  // ดอกเบี้ยบน competitor price (เพื่อแสดงต้นทุนดอกเบี้ยจริงถ้าซื้อที่ราคานั้น)
+  let intOnCompRow='';
+  if(useInterest){
+    const months=parseFloat(document.getElementById('holdMonths').value)||1;
+    const rate=(parseFloat(document.getElementById('intRate').value)||6.2)/100;
+    const intOnComp=compPrice*rate*months/12;
+    intOnCompRow=`<div class="impact-row">
+      <div class="impact-label">ดอกเบี้ย/ตัน (ถ้าซื้อที่ราคานี้, ${months}ด.)</div>
+      <div class="impact-value red">− ${fmt(intOnComp)} บาท</div>
+    </div>`;
+  }
+
   document.getElementById('impBatch').textContent=batchTon.toLocaleString('th-TH')+' ตัน';
   const impT=document.getElementById('impTotal');
   impT.textContent=(batchImpact>0?'+':'')+fmt(batchImpact)+' บาท';
   impT.className='impact-value '+(batchImpact>0?'red':batchImpact<0?'green':'neutral');
   document.getElementById('impBreakevenBatch').textContent=fmt(Math.round(r.finalPrice*batchTon))+' บาท';
   document.getElementById('impCompBatch').textContent=fmt(Math.round(compPrice*batchTon))+' บาท';
+  // inject interest row (if any) after ส่วนต่าง/ตัน row
+  const intRowEl=document.getElementById('intOnCompRow');
+  if(intRowEl)intRowEl.innerHTML=intOnCompRow;
 
   const rc=document.getElementById('resultCard2');rc.style.display='block';
   setTimeout(()=>rc.scrollIntoView({behavior:'smooth',block:'start'}),100);
